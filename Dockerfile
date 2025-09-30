@@ -1,14 +1,7 @@
-# Étape 1 : Build
-FROM node:18-alpine AS build
-
-# Crée le dossier de travail
+FROM node:20-bullseye
 WORKDIR /app
-
-# Copie les fichiers de config et installe les dépendances
 COPY package*.json ./
 RUN npm install
-
-# Copie le reste du code et build
 COPY . .
 RUN npm run build
 
