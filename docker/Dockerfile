@@ -4,11 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-
-ARG VITE_ENV=production
-
 # test
-RUN npm run build
+RUN npm run build:development
 # Étape 2 : nginx
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
