@@ -4,7 +4,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-echo "VITE_ENV=$VITE_ENV"
 
 ARG VITE_ENV=production
 
