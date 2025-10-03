@@ -10,8 +10,6 @@ ARG VITE_ENV=production
 # Si tu veux choisir entre build:development et build:production
 RUN if [ "$VITE_ENV" = "development" ]; then \
       npm run build:development ; \
-      if [ "$VITE_ENV" = "production" ]; then \
-      npm run build:production ; \
     else \
       npm run build
     fi
