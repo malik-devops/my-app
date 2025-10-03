@@ -4,8 +4,15 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
 
+ARG VITE_ENV=production
+
+# Si tu veux choisir entre build:development et build:production
+RUN if [ "$VITE_ENV" = "development" ]; then \
+      npm run build:development ; \
+    else \
+      npm run build:production ; \
+    fi
 # Étape 2 : nginx
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
