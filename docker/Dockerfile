@@ -7,12 +7,8 @@ COPY . .
 
 ARG VITE_ENV=production
 
-# Si tu veux choisir entre build:development et build:production
-RUN if [ "$VITE_ENV" = "development" ]; then \
-      npm run build:development ; \
-    else \
-      npm run build
-    fi
+# test
+RUN npm run build
 # Étape 2 : nginx
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
